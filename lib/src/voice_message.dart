@@ -96,7 +96,7 @@ class _VoiceMessageState extends State<VoiceMessage>
           _player.seek(const Duration(milliseconds: 0));
           setState(() {
             duration = _audioDuration!.inMilliseconds;
-            _remainingTime = _audioDuration.toString().substring(2, 7);
+            _remainingTime = widget.formatDuration!(_audioDuration!);
           });
           break;
         default:
@@ -107,11 +107,6 @@ class _VoiceMessageState extends State<VoiceMessage>
       (Duration p) => setState(
         () => _remainingTime = p.toString().substring(2, 7),
       ),
-      onDone: () {
-        setState(() {
-          _remainingTime = _audioDuration.toString().substring(2, 7);
-        });
-      },
     );
   }
 
