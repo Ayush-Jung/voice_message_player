@@ -97,6 +97,7 @@ class _VoiceMessageState extends State<VoiceMessage>
           setState(() {
             duration = _audioDuration!.inMilliseconds;
             _remainingTime = widget.formatDuration!(_audioDuration!);
+            debugPrint("> _startPlaying path $_remainingTime");
           });
           break;
         default:
