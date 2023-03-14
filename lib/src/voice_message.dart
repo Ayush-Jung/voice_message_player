@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 // ignore: library_prefixes
-import 'package:just_audio/just_audio.dart' as jsAudio;
 import 'package:voice_message_package/src/contact_noises.dart';
 import 'package:voice_message_package/src/helpers/utils.dart';
 
@@ -316,7 +315,8 @@ class _VoiceMessageState extends State<VoiceMessage>
     if (widget.duration != null) {
       _audioDuration = widget.duration;
     } else {
-      _audioDuration = await jsAudio.AudioPlayer().setUrl(widget.audioSrc!);
+      // _audioDuration = await AudioPlayer().setUrl(widget.audioSrc!);
+      _audioDuration = await _player.getDuration();
     }
     duration = _audioDuration!.inMilliseconds;
     maxDurationForSlider = duration + .0;
