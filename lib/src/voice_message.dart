@@ -107,6 +107,11 @@ class _VoiceMessageState extends State<VoiceMessage>
       (Duration p) => setState(
         () => _remainingTime = p.toString().substring(2, 7),
       ),
+      onDone: () {
+        setState(() {
+          _remainingTime = _audioDuration.toString().substring(2, 7);
+        });
+      },
     );
   }
 
