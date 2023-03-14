@@ -315,7 +315,7 @@ class _VoiceMessageState extends State<VoiceMessage>
     if (widget.duration != null) {
       _audioDuration = widget.duration;
     } else {
-      // _audioDuration = await AudioPlayer().setUrl(widget.audioSrc!);
+      await _player.setSourceUrl(widget.audioSrc!);
       _audioDuration = await _player.getDuration();
     }
     duration = _audioDuration!.inMilliseconds;
