@@ -97,18 +97,19 @@ class _VoiceMessageState extends State<VoiceMessage>
           setState(() {
             duration = _audioDuration!.inMilliseconds;
             _remainingTime = widget.formatDuration!(_audioDuration!);
-            debugPrint("> _startPlaying path $_remainingTime");
           });
           break;
         default:
           break;
       }
     });
-    _player.onPositionChanged.listen(
-      (Duration p) => setState(
-        () => _remainingTime = p.toString().substring(2, 7),
-      ),
-    );
+    _player.onPositionChanged.listen((Duration p) {
+      if (mounted) {
+        setState(
+          () => _remainingTime = p.toString().substring(2, 7),
+        );
+      }
+    });
   }
 
   @override
